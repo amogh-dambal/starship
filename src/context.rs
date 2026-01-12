@@ -477,6 +477,19 @@ impl<'a> Context<'a> {
     pub fn get_config_path_os(&self) -> Option<OsString> {
         get_config_path_os(&self.env)
     }
+
+    /// Returns [`true`] if we are currently in an SSH connection.
+    ///
+    /// This will check the following environment variables:
+    /// - `SSH_CONNECTION`
+    /// - `SSH_CLIENT`
+    /// - `SSH_TTY`
+    ///
+    /// If any are set, then this function returns [`true`].
+    pub fn is_ssh_session(&self) -> bool {
+        let env = ["SSH_CONNECTION", "SSH_CLIENT", "SSH_TTY"];
+        env.iter().any(|key| self.get_env_os(key).is_some())
+    }
 }
 
 impl Default for Context<'_> {
