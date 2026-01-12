@@ -2437,6 +2437,11 @@ format = 'via [⎈ $version](bold white) '
 
 The `hostname` module shows the system hostname.
 
+> [!TIP]
+> `starship` will detect an SSH connection by checking the environment variables
+> `SSH_CONNECTION`, `SSH_CLIENT`, and `SSH_TTY`. If your SSH host doesn't set up
+> any of these variables, one workaround is to set one of them with a dummy value.
+
 ### Options
 
 | Option            | Default                                | Description                                                                                                                           |
@@ -4810,9 +4815,9 @@ The module will be shown if any of the following conditions are met:
 - The array `detect_env_vars` contains at least the name of one environment variable, that is set
 
 > [!TIP]
-> SSH connection is detected by checking environment variables
-> `SSH_CONNECTION`, `SSH_CLIENT`, and `SSH_TTY`. If your SSH host does not set up
-> these variables, one workaround is to set one of them with a dummy value.
+> `starship` will detect an SSH connection by checking the environment variables
+> `SSH_CONNECTION`, `SSH_CLIENT`, and `SSH_TTY`. If your SSH host doesn't set up
+> any of these variables, one workaround is to set one of them with a dummy value.
 
 ### Options
 
